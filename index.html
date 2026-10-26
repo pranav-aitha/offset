@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="OFFSET - Serverless client-side binary segment parser and forensic engine. Zero-trust local sandbox execution.">
+  <meta name="description" content="OFFSET - Simple, clean, client-side binary segment parser and forensic engine. Zero-trust local sandbox execution.">
   <title>OFFSET // Client-Side Memory Segment Analysis</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="offset-body">
@@ -31,24 +31,31 @@
           <div class="indicator-stage">
             <span class="pulse-ring" aria-hidden="true"></span>
             <div class="pulse-core">
-              <svg class="terminal-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="4 17 10 11 4 5"></polyline>
-                <line x1="12" y1="19" x2="20" y2="19"></line>
+              <svg class="terminal-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
               </svg>
             </div>
           </div>
           <h2 class="prompt-title">Ingest Forensic Target File</h2>
           <p class="prompt-subtitle">Drop JPEG / PDF or Click to Map Directory Context</p>
           <div class="format-indicators">
-            <span class="format-pill">MIME: image/jpeg</span>
-            <span class="format-pill">MIME: application/pdf</span>
-            <span class="format-pill format-pill-crypto">SHA-256 LOCAL DIGEST</span>
+            <span class="format-pill">image/jpeg</span>
+            <span class="format-pill">application/pdf</span>
+            <span class="format-pill format-pill-crypto">Zero-Trust Sandbox</span>
+          </div>
+          <div class="demo-actions" onclick="event.stopPropagation();">
+            <span class="demo-label">Quick Test Samples:</span>
+            <button id="sample-jpg-btn" type="button" class="demo-btn">Sample JPEG</button>
+            <button id="sample-pdf-btn" type="button" class="demo-btn">Sample PDF</button>
           </div>
         </div>
       </section>
 
       <section id="analysis-viewport" class="diagnostic-viewport is-hidden">
         <div class="viewport-grid">
+          <!-- Left Column Pane -->
           <div class="pane-column pane-hex">
             <div class="forensic-card">
               <div class="card-header">
@@ -67,6 +74,7 @@
             </div>
           </div>
 
+          <!-- Right Column Pane -->
           <div class="pane-column pane-telemetry">
             <div class="forensic-card">
               <div class="card-header">
