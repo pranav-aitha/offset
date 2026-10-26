@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OFFSET - Serverless client-side binary segment parser and forensic engine. Zero-trust local sandbox execution.">
+  <title>OFFSET // Client-Side Memory Segment Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="offset-body">
+  <canvas id="vanta-canvas" class="vector-backdrop"></canvas>
+
+  <div class="app-container">
+    <header class="hero-header">
+      <div class="brand-wrapper">
+        <h1 class="brand-title">OFFSET<span class="brand-dot">.</span></h1>
+        <p class="brand-subtitle">Client-Side Memory Segment Analysis &amp; Binary Forensic Engine</p>
+      </div>
+      <div class="security-tag-container">
+        <span class="security-tag-badge">// LOCAL_SANDBOX_ENFORCED</span>
+      </div>
+    </header>
+
+    <main class="workspace-main">
+      <section id="drop-node" class="drop-workspace" tabindex="0" role="button" aria-label="Drop target binary file for local inspection">
+        <input type="file" id="file-ingest" class="file-input-hidden" accept="image/jpeg,application/pdf" aria-hidden="true">
+        <div class="prompt-area">
+          <div class="indicator-stage">
+            <span class="pulse-ring" aria-hidden="true"></span>
+            <div class="pulse-core">
+              <svg class="terminal-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+            </div>
+          </div>
+          <h2 class="prompt-title">Ingest Forensic Target File</h2>
+          <p class="prompt-subtitle">Drop JPEG / PDF or Click to Map Directory Context</p>
+          <div class="format-indicators">
+            <span class="format-pill">MIME: image/jpeg</span>
+            <span class="format-pill">MIME: application/pdf</span>
+            <span class="format-pill format-pill-crypto">SHA-256 LOCAL DIGEST</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="analysis-viewport" class="diagnostic-viewport is-hidden">
+        <div class="viewport-grid">
+          <div class="pane-column pane-hex">
+            <div class="forensic-card">
+              <div class="card-header">
+                <div class="header-left">
+                  <span class="header-node-indicator"></span>
+                  <h3 class="card-title">[0x00] BINARY HEADER SPLICER</h3>
+                </div>
+                <div class="header-actions">
+                  <span id="hex-range-tag" class="range-badge">0x0000 - 0x0400</span>
+                  <button id="copy-hex-btn" class="action-btn" type="button" title="Copy raw hex stream">COPY STREAM</button>
+                </div>
+              </div>
+              <div class="code-viewport">
+                <pre class="hex-pre"><code id="hex-stream" class="hex-code">// Binary stream buffer waiting for ingestion...</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="pane-column pane-telemetry">
+            <div class="forensic-card">
+              <div class="card-header">
+                <div class="header-left">
+                  <span class="header-node-indicator node-active"></span>
+                  <h3 class="card-title">[0x01] EXTRACTED TELEMETRY REGISTERS</h3>
+                </div>
+                <div class="header-actions">
+                  <span id="entropy-tag" class="range-badge range-badge-entropy">ENTROPY: --</span>
+                </div>
+              </div>
+              <div class="ledger-viewport">
+                <div id="metadata-ledger" class="metadata-grid">
+                  <!-- Dynamic telemetry registers populated by app.js -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="terminal-footer">
+      <div class="footer-meta-block">Mde WITH LOVE BY PRANAV AITHA</div>
+      <nav class="footer-social-cluster" aria-label="Author Social Profiles">
+        <a class="social-anchor" href="https://x.com/PRANAV_AITHA" target="_blank" rel="noopener noreferrer">X // Twitter</a>
+        <a class="social-anchor" href="https://github.com/pranav-aitha" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="social-anchor" href="https://instagram.com/pranav_aitha" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </nav>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
